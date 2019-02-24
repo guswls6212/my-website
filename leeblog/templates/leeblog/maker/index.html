@@ -1,0 +1,30 @@
+{% extends "leeblog/base.html" %}
+{% load static %}
+{% block content %}
+<h1>Maker Index </h1>
+<table id="makertable" class="display" style="width:100%">
+  <thead>
+      <tr>
+        <th>#</th>
+        <th>maker</th>
+        <th>brandname</th>
+        <th>button</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for maker in makers %}
+      <tr>
+        <td><a href="{{maker.get_absolute_url }}">{{maker.id}}</a></td>
+        <td>{{maker.maker_name}}</td>
+        <td>{{maker.brand_name}}</td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+
+<script type="text/javascript" src="{% static 'leeblog/makertable.js' %}" ></script>
+{% endblock content %}

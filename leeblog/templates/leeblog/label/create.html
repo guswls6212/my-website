@@ -1,0 +1,18 @@
+{% extends "leeblog/base.html" %}
+{% load static %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  <input type="hidden" name="maker" id="id_maker" value="{{ maker.id }}">
+      <div class="fieldWrapper">
+        <label for="id_maker_name">maker name:</label>
+        {{ maker.maker_name }}
+    </div>
+    <div class="fieldWrapper">
+      <label for="id_brand_name">brand name:</label>
+      {{ maker.brand_name }}
+    </div>
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+{% endblock content %}

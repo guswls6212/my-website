@@ -1,0 +1,34 @@
+{% extends "leeblog/base.html" %}
+{% load static %}
+{% load filename %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <p>
+      <label>maker name</label>
+      {{ label.maker.maker_name}}
+    </p>
+    <p>
+      <label>brand name</label>
+      {{ label.maker.brand_name}}
+    </p>
+    <p>
+      <label>sw version</label>
+      {{ label.sw_version}}
+    </p>
+    <p>
+      <label>os version</label>
+      {{ label.os_version}}
+    </p>
+    <p>
+      <label>upload date</label>
+      {{ label.upload_date}}
+    </p>
+    <p>
+      <label>file name</label>
+      {{ label.label_file| getfilename}}
+    </p>
+  </div>
+</div>
+
+{% endblock content %}

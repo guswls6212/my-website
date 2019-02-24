@@ -12,9 +12,14 @@
     <title>Lee Blog</title>
   {% endif %}
 
-  <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <!-- Custom -->
     <link type="text/css" href="{% static 'leeblog/main.css' %}" rel="stylesheet">
 
   </head>
@@ -22,27 +27,43 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">Lee Blog</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-            <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
-            </div>
-          </div>
+          {% if 'label' in request.path %}
+                <a class="navbar-brand mr-4 btn btn-primary" href="{% url 'lee:label-maker_index' %}">Label</a>
+          {% else %}
+                <a class="navbar-brand mr-4 btn btn-primary" href="{% url 'lee:label-maker_index' %}">Camera</a>
+          {% endif %}
+                <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'lee:label-maker_index' %}">Label</a>
+                        <a class="dropdown-item" href="{% url 'lee:camera-maker_index' %}">Camera</a>
+                      </div>
+                    </li>
+                  </ul>
+                <a class="navbar-brand mr-4 btn btn-info pull-right" href="{% url 'lee:maker_create' %}">Maker Create</a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse">
+                  <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <div class="navbar-nav mr-auto">
+                  <!-- <a class="nav-item nav-link" href="{% url 'lee:blog-home' %}">Home</a>
+                  <a class="nav-item nav-link" href="{% url 'lee:blog-about' %}">About</a> -->
+                  <!-- <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="#">Login</a>
+                    <a class="nav-item nav-link" href="#">Register</a>
+                  </div> -->
+                </div>
         </div>
       </nav>
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
         {% block content %}{% endblock %}
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="content-section">
             <h3>Our Sidebar</h3>
             <p class='text-muted'>You can put any information here you'd like.
@@ -53,12 +74,12 @@
                 <li class="list-group-item list-group-item-light">etc</li>
               </ul>
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
     </main>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>

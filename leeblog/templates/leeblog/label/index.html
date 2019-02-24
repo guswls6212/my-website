@@ -1,0 +1,49 @@
+{% extends "leeblog/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-header clearfix">
+    <h2 class="pull-left">Label Index</h2>
+    <a href="{% url 'lee:label_create' maker.id %}" class="btn btn-success pull-right">Label Create</a>
+</div>
+
+<table id="makertable" class="display" style="width:100%">
+  <thead>
+      <tr>
+        <th>#</th>
+        <th>image</th>
+        <th>makername</th>
+        <th>brandname</th>
+        <th>sw_version</th>
+        <th>os_version</th>
+        <th>upload_date</th>
+        <th>test_date</th>
+        <th>button</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for label in labels %}
+        <tr>
+          <td>{{label.id}}</td>
+          <!-- thumbnail breed.image 400x200 -->
+          <td><img src="{{label.label_file.url }}" alt="" style="width:100px;height:100px;"></td>
+          <td>{{maker.maker_name}}</td>
+          <td>{{maker.brand_name}}</td>
+          <td>{{label.sw_version}}</td>
+          <td>{{label.os_version}}</td>
+          <td>{{label.upload_date}}</td>
+          <td>{{label.test_date}}</td>
+          <td>
+            <a href="{% url 'lee:label_detail' label.id %}">Detail</a>
+            <a href="#">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+
+<script type="text/javascript" src="{% static 'leeblog/makertable.js' %}" ></script>
+{% endblock content %}
