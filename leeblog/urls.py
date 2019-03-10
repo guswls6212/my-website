@@ -4,7 +4,9 @@ from leeblog.views import (
     MakerView,
     MakerCreateView,
     LabelView,
-    LabelDetailView
+    LabelDetailView,
+
+    RecipeCreateView
 )
 
 
@@ -14,6 +16,8 @@ urlpatterns = [
     #Maker
     path('camera/maker/index/', views.MakerView.as_view(), name='camera-maker_index'),
     path('maker/create/', views.MakerCreateView.as_view(), name='maker_create'),
+
+    path('recipe/create/', views.RecipeCreateView.as_view(), name='recipe_create'),
 
     #Label
     path('label/maker/index/', views.MakerView.as_view(), name='label-maker_index'),
